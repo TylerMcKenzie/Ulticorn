@@ -1,0 +1,8 @@
+{
+  "name": "ionic_ulticorn_app",
+  "app_id": "",
+  "watchPatterns": [
+    "www/js/*",
+    "!www/css/**/*"
+  ]
+}

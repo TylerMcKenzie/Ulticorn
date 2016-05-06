@@ -1,0 +1,22 @@
+<ion-header-bar class="bar-royal">
+  <h1 class="title">Ulticorn</h1>
+</ion-header-bar>
+<ion-content>
+	<button ng-hide="gifList" class="button button-royal submbut center" ng-click="summon()">SUMMON the UNICORNS!</button>
+
+	<img class="padding-top" collection-repeat="gif in gifList"
+    item-width="33%"
+    item-height="150px"
+    ng-src="{{gif.images.fixed_height_small.url}}"
+    ng-click="openModal(gif)">
+
+    <ion-infinite-scroll on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+</ion-content>
+
+<script id="my-modal.html" type="text/ng-template">
+  <div class="modal image-modal transparent" ng-click="modal.hide()">
+    <ion-pane class="transparent">
+      <img class="fullscreen-image" ng-src="{{modalUrl}}"/>
+    </ion-pane>
+  </div>
+</script>
