@@ -1,8 +1,8 @@
 var app = angular.module('starter');
 
-app.controller('GameCtrl', [function () {
+app.controller('GameCtrl', ['$http', function ($http) {
 	var firstGame = {};
-
+	
 	// BOOT
 
 	firstGame.Boot = function(game) {};
@@ -72,7 +72,7 @@ app.controller('GameCtrl', [function () {
 			this.load.bitmapFont('eightbitwonder', 'js/game/fonts/eightbitwonder.png', 'js/game/fonts/eightbitwonder.fnt');
 			this.load.image('sky', 'js/game/images/sky.png');
 			this.load.image('hill', 'js/game/images/hill.png');
-			this.load.atlasXML('bunny', 'js/game/images/spritesheets/bunny.png', 'js/game/images/spritesheets/bunny.xml');
+			this.load.atlasXML('bunny', 'js/game/images/spritesheets/unicorn.png', 'js/game/images/spritesheets/bunny.xml');
 			this.load.atlasXML('spacerock', 'js/game/images/spritesheets/SpaceRock.png', 'js/game/images/spritesheets/SpaceRock.xml');
 			this.load.image('explosion', 'js/game/images/explosion.png');
 			this.load.image('ghost', 'js/game/images/ghost.png');
@@ -116,7 +116,7 @@ app.controller('GameCtrl', [function () {
 			this.timer = this.time.create(false);
 			this.timer.loop(1000, this.updateSeconds, this);
 			this.totalBunnies = 20;
-			this.totalSpacerocks = 13;
+			this.totalSpacerocks = 7;
 			this.music = this.add.audio('game_audio');
 			this.music.play('', 0, 0.3, true);
 			this.ouch = this.add.audio('hurt_audio');
@@ -133,7 +133,7 @@ app.controller('GameCtrl', [function () {
 			this.buildBunnies();
 			this.buildSpaceRocks();
 			this.buildEmitter();
-			this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', "Bunnies Left " + this.totalBunnies, 20);
+			this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', "Unicorns Left " + this.totalBunnies, 20);
 			this.timer.start();
 		},
 		buildEmitter: function() {
@@ -238,13 +238,13 @@ app.controller('GameCtrl', [function () {
 				this.music.stop();
 				console.log("");
 				this.gameover = true;
-				this.countdown.setText("Bunnies Left 0");
+				this.countdown.setText("Unicorns Left 0");
 				this.overmessage = this.add.bitmapText(this.world.centerX - 180, this.world.centerY - 40, 'eightbitwonder', "Game Over\n\n " + this.secondsElapsed, 42);
 				this.overmessage.align = 'center';
 				this.overmessage.inputEnabled = true;
 				this.overmessage.events.onInputDown.addOnce(this.quitGame, this);
 			} else {
-				this.countdown.setText("Bunnies Left " + this.totalBunnies);
+				this.countdown.setText("Unicorns Left " + this.totalBunnies);
 			}
 		},
 		quitGame: function() {
